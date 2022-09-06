@@ -23,17 +23,18 @@ router.get('/5slock1', function (req, res, next) {
     msg: 'lock1 開始上鎖，5秒後自動解鎖'
   })
 })
-router.get('/5slock2', function (req, res, next) {
+router.get('/5slock2',async function (req, res, next) {
   if (!lock2.hasLocked()) {
     lock2.setLocked()
-
-    setTimeout(() => {
-      lock2.cancelLocked()
-    }, 5 * 1000)
-    
-    return res.json({
+    res.json({
       msg: 'lock1 已被上鎖，於5秒內自動解'
     })
+    await new Promise((resolve, reject) => {setTimeout(() => {
+        resolve(true)
+    }, 5 * 1000)});
+    
+    lock2.cancelLocked()
+    return;
   }
 
   res.json({

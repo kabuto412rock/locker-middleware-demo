@@ -1,4 +1,5 @@
 const express = require('express');
+const lockerGuard = require('../middlewares/locker-guard');
 const {lock1, lock2} = require('../module/loceker-pool');
 const router = express.Router();
 
@@ -38,5 +39,9 @@ router.get('/locks', (req, res) => {
     })
 })
 
-
+router.get('/lock-route', lockerGuard,  (req, res) => {
+    res.json({
+        msg: '你看得到這個訊息，代表lock1、lock2都還沒被上鎖'
+    })
+})
 module.exports = router;
