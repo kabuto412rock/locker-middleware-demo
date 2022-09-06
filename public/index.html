@@ -8,6 +8,27 @@
 <body>
   <h1>Express</h1>
   <p>Welcome to Express</p>
+  <button onclick="getUrlAndShowResponse('/locker/lock1');">設定lock1(反轉狀態)</button>
+  <button onclick="getUrlAndShowResponse('/locker/lock2');">設定lock2(反轉狀態)</button>
+  <button onclick="getUrlAndShowResponse('/locker/locks');">所有鎖的狀態</button>
+  <button onclick="getUrlAndShowResponse('/users');">被鎖保護的路由</button>
+  <button onclick="getUrlAndShowResponse('/5slock1');">Lock1上鎖5秒並解鎖</button>
+  <button onclick="getUrlAndShowResponse('/5slock2');">Lock2上鎖5秒並解鎖</button>
+  <div id="result-msg">
+
+  </div>
 </body>
+<script>
+  const resultMsg = document.getElementById('result-msg');
+  function getUrlAndShowResponse(url) {
+    fetch(url).then((response) => {
+      response.text().then((value) => {
+        resultMsg.innerText = value;
+      })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+</script>
 
 </html>
