@@ -5,8 +5,9 @@
 
 ## 提供簡易(陋)的操作介面
 ![locker-demo.png](locker-demo.png)
-這些按鈕會將呼叫的API的結果顯示在底下，
+[簡陋介面連結](http://localhost:3000/)
 
+這些按鈕會將呼叫的API的結果顯示在底下，
 最左邊兩個按鈕是設定lock1、lock2要不要上鎖，
 如果原本是上鎖狀態就會變沒上鎖，沒上鎖就會變有上鎖。
 
@@ -25,4 +26,3 @@ npm install
 ```bash
 npm run start
 ```
-
